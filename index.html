@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <script src="dist/script.js" defer></script>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon.jpg">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="first-div">
+            <div class="nav1">
+                <div class="nav1-left">
+                    <p>gitongasally@gmail.com</p>
+                    <p>+2547 90 118 500</p>
+                </div>
+                <div class="nav1-center">
+                    <h1>H</h1>
+                    <h2>TOURS AND TRAVELS</h2>
+                </div>
+                <div class="nav1-right">
+                    <div class="contacts">
+                        <p>gitongasally@ gmail.com</p>
+                        <p>+2547 90 118 500</p>
+                    </div>
+                    <div class="contact-icon">
+                        <ion-icon name="call-outline"></ion-icon>
+                    </div>
+                </div>
+            </div>
+            <div class="nav2">
+                <div class="nav-links">
+                    <a href="#" class="nav-link">HOME</a>
+                    <a href="#" class="nav-link">HOTELS</a>
+                    <a href="#" class="nav-link">BOOKINGS</a>
+                    <a href="#" class="nav-link">TOURS</a>
+                    <a href="login.html" class="nav-link">LOGIN/SIGNUP</a>
+                </div>
+                <div class="username-icon">
+                    <ion-icon name="person-outline"></ion-icon>
+                    <p class="username" id="username"></p>
+                </div>
+                <div class="message">
+                    <ion-icon name="chatbubble-ellipses-outline"></ion-icon>
+                </div>
+            </div>
+            <div class="main-message">
+                <ion-icon name="arrow-back-outline"></ion-icon>
+                <div class="h3">
+                    <h3>Enjoy A Luxury </h3>
+                    <h3>Experience</h3>
+                </div>
+
+
+                <ion-icon name="arrow-forward-outline"></ion-icon>
+            </div>
+
+            <div class="button-div">
+                <button>Book Now</button>
+            </div>
+        </div>
+        <div class="second-div">
+            <div class="second-div-title">
+                <h3>Our Most Popular Hotels</h3>
+            </div>
+            <div class="popular-display">
+                <div class="popular-hotel-container">
+                    <div class="image"><img src="images/hotel.jpg" alt="hotel"></div>
+                    <div class="popular-hotel-details">
+                        <h4>Holiday Inn</h4>
+                        <div class="stars"><ion-icon name="star-outline"></ion-icon><ion-icon
+                                name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon
+                                name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon>
+                        </div>
+                        <div class="last-thing-popular">
+                            <p>King'ongo Nyeri</p><button>Book Now</button>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="popular-hotel-container">
+                    <div class="image"><img src="images/hotel.jpg" alt="hotel"></div>
+                    <div class="popular-hotel-details">
+                        <h4>Holiday Inn</h4>
+                        <div class="stars"><ion-icon name="star-outline"></ion-icon><ion-icon
+                                name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon
+                                name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon>
+                        </div>
+                        <div class="last-thing-popular">
+                            <p>King'ongo Nyeri</p><button>Book Now</button>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="popular-hotel-container">
+                    <div class="image"><img src="images/hotel.jpg" alt="hotel"></div>
+                    <div class="popular-hotel-details">
+                        <h4>Holiday Inn</h4>
+                        <div class="stars"><ion-icon name="star-outline"></ion-icon><ion-icon
+                                name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon
+                                name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon>
+                        </div>
+                        <div class="last-thing-popular">
+                            <p>King'ongo Nyeri</p><button>Book Now</button>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+            <div class="view-more">
+                <h4><a href="hotels.html">View All Hotels</a></h4>
+            </div>
+
+
+            <div id="edit-user" class="edit-user">
+                <div class="edit-user-header">
+                    <h2>User Information</h2>
+                    <button id="closeEditUserButton">&times;</button>
+                </div>
+
+                <div class="edit-user-content" id="edit-user-content">
+                    <div class="edit-user-success-message"></div>
+                    <div class="edit-user-error-message">
+
+                    </div>
+                    <div class="deleteUser"><ion-icon class="deleteUserBin" name="trash-outline"></ion-icon></div>
+                    <div class="user-info-edit">
+                        <label for="">Email</label>
+                        <input type="text" placeholder="email" class="emailInput">
+                    </div>
+                    <div class="user-info-edit">
+                        <label for="">Username</label>
+                        <input type="text" placeholder="username" class="usernameInput">
+                    </div>
+
+
+                    <button id="btnEdit">Edit</button>
+
+                </div>
+
+            </div>
+        </div>
+        <footer>
+            <div class="links">
+                <div class="company-info">
+                    <h4>Company Info</h4>
+                    <a href="#">About Us</a>
+                    <a href="#">Carrier</a>
+                    <a href="#">We are hiring</a>
+                    <a href="#">Blog</a>
+                </div>
+                <div class="legal">
+                    <h4>Legal</h4>
+                    <a href="#">About Us</a>
+                    <a href="#">Carrier</a>
+                    <a href="#">We are hiring</a>
+                    <a href="#">Blog</a>
+                </div>
+                <div class="features">
+                    <h4>Features</h4>
+                    <a href="#">Business Marketing</a>
+                    <a href="#">User Analytics</a>
+                    <a href="#">Live Chat</a>
+                    <a href="#">Unlimited Support</a>
+                </div>
+                <div class="resources">
+                    <h4>Resources</h4>
+                    <a href="#">IOS and Android</a>
+                    <a href="#">Watch a Demo</a>
+                    <a href="#">Customers</a>
+                    <a href="#">API</a>
+                </div>
+                <div class="get-in-touch">
+                    <h4>Get In Touch</h4>
+                    <p><ion-icon name="call-outline"></ion-icon>(480) 555-0103</p>
+                    <p><ion-icon name="location-outline"></ion-icon>4517 Washington Ave.</p>
+                    <p><ion-icon name="mail"></ion-icon>debra.holt@example.com</p>
+                </div>
+            </div>
+            <div class="last-thing">
+                <div class="copyright">
+                    <p>Made With Love By Sally Gitonga All Rights Reserved</p>
+                </div>
+                <div class="socials">
+                    <ion-icon name="logo-facebook"></ion-icon>
+                    <ion-icon name="logo-instagram"></ion-icon>
+                    <ion-icon class="twitter" name="logo-twitter"></ion-icon>
+                </div>
+            </div>
+        </footer>
+    </div>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+</body>
+
+</html>
