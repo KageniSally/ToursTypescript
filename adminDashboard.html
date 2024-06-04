@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="/styles.css">
+    <script src="dist/adminDashboard.js" defer></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon.jpg">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+</head>
+
+<body>
+    <div class="adminContainer">
+        <div class="adminContainerLeft">
+            <div class="admin-user">
+                <ion-icon name="person"></ion-icon>
+                <p class="adminUsername"></p>
+                <p class="adminEmail"></p>
+            </div>
+            <div class="adminLinks">
+                <div class="adminLink">
+                    <ion-icon name="home"></ion-icon>
+                    <h4 id="homeAdmin">Home</h4>
+                </div>
+                <div class="adminLink">
+                    <ion-icon name="airplane"></ion-icon>
+                    <h4 id="toursAdmin">Tours</h4>
+                </div>
+                <div class="adminLink">
+                    <ion-icon name="bed"></ion-icon>
+                    <h4 id="hotelsAdmin">Hotels</h4>
+                </div>
+                <div class="adminLink">
+                    <ion-icon name="people"></ion-icon>
+                    <h4 id="usersAdmin">Users</h4>
+                </div>
+                <div class="adminLink">
+                    <ion-icon name="bookmark"></ion-icon>
+                    <h4 id="bookingsAdmin">Bookings</h4>
+                </div>
+                <div class="adminLink">
+                    <ion-icon name="log-out"></ion-icon>
+                    <h4 id="logoutAdmin">Logout</h4>
+                </div>
+            </div>
+        </div>
+        <div class="adminContainerRight">
+            <div class="home">
+                <div class="first-admin-div">
+                    <div class="left-first-div">
+                        <div class="backgroundForIcon">
+                            <ion-icon name="bed"></ion-icon>
+                        </div>
+                        <div class="admin-main-links">
+                            <h3>Hotel</h3>
+                        </div>
+                    </div>
+                    <div class="right-first-div">
+                        <div class="backgroundForIcon">
+                            <ion-icon name="people"></ion-icon>
+                        </div>
+                        <div class="admin-main-links">
+                            <h3>Users</h3>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="second-admin-div">
+                    <div class="left-second-div">
+                        <div class="backgroundForIcon">
+                            <ion-icon name="airplane"></ion-icon>
+                        </div>
+                        <div class="admin-main-links">
+                            <h3>Tour</h3>
+                        </div>
+                    </div>
+                    <div class="right-second-div">
+                        <div class="backgroundForIcon">
+                            <ion-icon name="bookmark"></ion-icon>
+                        </div>
+                        <div class="admin-main-links">
+                            <h3>Bookings</h3>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="toursAdminDiv">
+                <h2>Tours</h2>
+                <div class="tours-table">
+                    <table id="tours-table-display">
+                        <thead>
+                            <tr>
+                                <th>Tour ID</th>
+                                <th>Tour Name</th>
+                                <th>Hotels</th>
+                                <th>Destination</th>
+                                <th>Description</th>
+                                <th>Price</th>
+                            </tr>
+                        </thead>
+                        <tbody class="display-tours">
+                            <tr>
+                                <td>234ghj</td>
+                                <td>Euro Trip</td>
+                                <td>
+                                    <select name="" id="">
+                                        <option value="">Pride in</option>
+                                        <option value="">Panafric</option>
+                                        <option value="">Panesic</option>
+                                        <option value="">Mountain Breeze</option>
+                                    </select>
+                                </td>
+                                <td>Nakuru</td>
+                                <td> Great Experience</td>
+                                <td>52,000</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+                <div class="add-tours">
+                    <div class="edit-user-success-message"></div>
+                    <div class="edit-user-error-message"></div>
+                    <form action="">
+                        <fieldset>
+                            <legend>Add Tours</legend>
+                            <input type="text" placeholder="Tour Name" id="tourInput" required>
+                            <input type="text" placeholder="Image URL" id="imageInput" required>
+                            <div class="addTourHotels">
+                                <label for="">Hotels</label><ion-icon name="add" id="addTourHotels"></ion-icon>
+                            </div>
+                            <input type="text" placeholder="Destination" id="destinationInput" required>
+                            <input type="text" placeholder="Description" id="descriptionInput" required>
+                            <input type="text" placeholder="Price" id="priceInput" required>
+                            <button id="addTour-btn">Add Tour</button>
+                        </fieldset>
+                    </form>
+                </div>
+
+            </div>
+            <div class="hotelsAdminDiv">
+                <h2>Hotels</h2>
+                <div class="hotels-table">
+                    <table id="hotels-table-display">
+                        <thead>
+                            <tr>
+                                <th>Hotel ID</th>
+                                <th>Hotel Name</th>
+                                <th>Location</th>
+                                <th>Rating</th>
+
+                            </tr>
+                        </thead>
+                        <tbody class="display-tours">
+                            <tr>
+                                <td>234ghj</td>
+                                <td>Panafric</td>
+                                <td>Nakuru</td>
+                                <td> 5 stars</td>
+
+                            </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+            <div class="userAdminDiv">
+                <h2>Users</h2>
+                <div class="users-table">
+                    <table id="users-table-display">
+                        <thead>
+                            <tr>
+                                <th>User ID</th>
+                                <th>User Name</th>
+                                <th>User Email</th>
+                                <th>Role</th>
+                                <th>Delete</th>
+                            </tr>
+                        </thead>
+                        <tbody class="display-users">
+                            <!-- <tr>
+                                <td>234ghj</td>
+                                <td>Sally Gitonga</td>
+                                <td>gitongasally4@gmail.com</td>
+                                <td>Customer</td>
+                                <td> <ion-icon class="deleteUserBin" name="trash-outline"></ion-icon></td>
+                            </tr> -->
+                        </tbody>
+                    </table>
+
+                </div>
+
+            </div>
+            <div class="bookingsAdminDiv">
+                <h2>Bookings</h2>
+            </div>
+        </div>
+    </div>
+
+
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+</body>
+
+</html>

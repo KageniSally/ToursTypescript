@@ -1,0 +1,979 @@
+:root {
+    --secondary-color: #FFC107;
+    --primary-color: #FFFFFF;
+    --black: black;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    font-family: "Playfair Display", sans-serif;
+}
+
+/* Home Page */
+.container {
+    width: 100%;
+    height: 100%;
+    background-color: var(--primary-color);
+}
+
+.first-div {
+    background-image: url(images/interior.jpg);
+    background-size: cover;
+    width: 100%;
+    height: 600px;
+    background-color: var(--secondary-color);
+    box-shadow: inset 0 0 0 2000px rgba(250, 250, 249, 0.185);
+
+    background-repeat: no-repeat;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.nav1 {
+    /* padding: 15px; */
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.nav1-left {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.nav1-left p {
+    color: var(--primary-color);
+    font-size: 12px;
+}
+
+h1 {
+    color: var(--primary-color);
+    font-size: 60px;
+}
+
+h2 {
+    color: var(--primary-color);
+    font-size: 15px;
+}
+
+.nav1-center {
+    display: flex;
+    flex-direction: column;
+    /* gap: 5px; */
+    /* justify-content: center; */
+    align-items: center;
+}
+
+.nav1-right {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.nav1-right p {
+    color: var(--primary-color);
+    font-size: 12px;
+}
+
+.contact-icon ion-icon {
+    width: 25px;
+    height: 25px;
+    color: var(--primary-color);
+    rotate: 180;
+}
+
+.nav2 {
+    /* padding: 15px; */
+    width: 90%;
+    background-color: rgba(0, 0, 0, 0.781);
+    display: flex;
+    align-items: center;
+    height: 50px;
+    margin-top: 15px;
+
+}
+
+.nav-links {
+    width: 90%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: var(--primary-color);
+    font-size: 12px;
+}
+
+.username {
+    font-size: 12px;
+    color: var(--primary-color);
+}
+
+.username-icon ion-icon {
+    height: 15px;
+    width: 15px;
+    color: var(--primary-color);
+}
+
+.username-icon {
+    display: flex;
+    gap: 10px;
+}
+
+.username {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--secondary-color);
+    margin-right: 5px;
+    cursor: pointer;
+}
+
+.message {
+    background-color: var(--secondary-color);
+    height: 50px;
+    width: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+
+}
+
+
+
+.message ion-icon {
+    height: 30px;
+    width: 30px;
+    color: var(--primary-color);
+}
+
+.main-message {
+    width: 90%;
+    margin-top: 200px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.main-message ion-icon {
+    color: var(--secondary-color);
+    height: 35px;
+    width: 35px;
+}
+
+.main-message h3 {
+    font-size: 40px;
+    color: var(--primary-color);
+    text-align: center;
+}
+
+.button-div {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+
+}
+
+.button-div button {
+    background-color: var(--secondary-color);
+    height: 35px;
+    width: 120px;
+    color: var(--primary-color);
+    border: none;
+}
+
+.button-div button:hover {
+    background-color: transparent;
+    border: 2px solid var(--primary-color);
+}
+
+.second-div {
+    background-color: var(--primary-color);
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 20px;
+    align-items: center;
+}
+
+.second-div-title {
+    margin-top: 20px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.second-div-title h3 {
+    font-size: 25px;
+}
+
+.popular-display {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    width: 70%;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+
+}
+
+.popular-hotel-container {
+
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+}
+
+.image img {
+    width: 100%;
+    height: 200px;
+}
+
+.popular-hotel-details {
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.popular-display h4 {
+    font-size: 20px;
+}
+
+.stars {
+    display: flex;
+    gap: 10px;
+}
+
+.stars ion-icon {
+    color: var(--secondary-color);
+}
+
+.last-thing-popular {
+    display: flex;
+    gap: 40px;
+    align-items: center;
+}
+
+.last-thing-popular p {
+    font-size: 14px;
+}
+
+.last-thing-popular button {
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+    height: 35px;
+    width: 100px;
+    border: none;
+}
+
+.last-thing-popular button:hover {
+    background-color: transparent;
+    border: 1px solid var(--black);
+    color: var(--black);
+}
+
+.view-more {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+    opacity: 70%;
+    cursor: pointer;
+}
+
+.view-more a {
+    text-decoration: none;
+    color: var(--black);
+}
+
+.edit-user {
+
+    position: fixed;
+    top: 25%;
+    right: -350px;
+    width: 350px;
+    height: 47%;
+    background-color: rgba(0, 0, 0, 0.753);
+    transition: right 0.3s ease;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+}
+
+.edit-user.open {
+    right: 0;
+}
+
+.edit-user-success-message {
+    width: 83%;
+    position: fixed;
+    display: none;
+    height: 35px;
+    border-radius: 10px;
+    padding: 10px;
+    background-color: rgba(6, 202, 6, 0.589);
+    position: fixed;
+}
+
+.edit-user-error-message {
+    width: 83%;
+    position: absolute;
+    display: none;
+    height: 35px;
+    border-radius: 10px;
+    background-color: rgba(202, 19, 6, 0.589);
+    padding: 10px;
+}
+
+.messageP {
+    font-size: 12px;
+    color: var(--primary-color);
+}
+
+.deleteUser {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.deleteUserBin {
+    color: red;
+    height: 23px;
+    width: 23px;
+    cursor: pointer;
+}
+
+
+.edit-user-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+}
+
+.edit-user-content {
+    padding-top: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    max-height: calc(100% - 60px);
+}
+
+.user-info-edit {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+.edit-user-content label {
+    color: var(--primary-color);
+    font-size: 12px;
+
+}
+
+.edit-user-content input {
+    border-radius: 10px;
+    height: 35px;
+    background-color: transparent;
+    border: 1px solid var(--primary-color);
+    padding-left: 10px;
+    color: var(--primary-color);
+}
+
+
+.edit-user-content input ::placeholder {
+    color: var(--primary-color);
+}
+
+
+#closeEditUserButton {
+    background: none;
+    border: none;
+    color: var(--primary-color);
+    font-size: 24px;
+    cursor: pointer;
+}
+
+
+.edit-user-content button {
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+    height: 30px;
+    /* width: 80%; */
+    border: none;
+    border-radius: 10px;
+    font-size: 12px;
+    font-weight: 600;
+    height: 35px;
+}
+
+footer {
+    height: 200px;
+    width: 100%;
+}
+
+.links {
+    display: flex;
+    justify-content: space-evenly;
+    gap: 45px;
+    margin-top: 30px;
+    background-color: white;
+    height: 180px;
+    width: 100%;
+}
+
+.company-info,
+.legal,
+.features,
+.resources,
+.get-in-touch {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+
+}
+
+
+.company-info h4,
+.legal h4,
+.features h4,
+.resources h4,
+.get-in-touch h4 {
+    font-size: 12px;
+}
+
+.get-in-touch ion-icon {
+    color: rgba(6, 171, 236, 0.781);
+    height: 15px;
+    width: 15px;
+    padding-right: 5px;
+}
+
+.get-in-touch p {
+    font-size: 12px;
+}
+
+.company-info a,
+.legal a,
+.features a,
+.resources a,
+.get-in-touch a {
+    font-size: 12px;
+    text-decoration: none;
+    color: black;
+}
+
+.last-thing {
+    display: flex;
+    justify-content: space-between;
+    gap: 250px;
+    height: 50px;
+    align-items: center;
+}
+
+.copyright p {
+    font-size: 12px;
+    margin-left: 250px;
+}
+
+.socials ion-icon {
+    color: rgba(6, 171, 236, 0.781);
+    height: 15px;
+    width: 15px;
+}
+
+.twitter {
+    margin-right: 250px;
+}
+
+/* Login */
+.container-login {
+    width: 100%;
+    height: 100vh;
+    background-image: url(images/login.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-shadow: inset 0 0 0 2000px rgba(250, 250, 249, 0.185);
+}
+
+.container-login form {
+    background-color: rgba(255, 255, 255, 0.26);
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    padding: 45px;
+    border-radius: 20px;
+    width: 30%;
+}
+
+.container-login form h3 {
+    color: var(--primary-color);
+
+}
+
+.email {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.password {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.container-login button {
+    height: 35px;
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+    border: none;
+    border-radius: 10px;
+}
+
+.container-login form input {
+    height: 35px;
+    border-radius: 10px;
+    border: none;
+    padding-left: 10px;
+}
+
+.container-login form label {
+    font-size: 12px;
+    color: var(--primary-color);
+}
+
+.container-login form ::placeholder {
+    opacity: 60%;
+    font-size: 12px;
+}
+
+.socials-login {
+    display: flex;
+    gap: 15px;
+}
+
+.social-back {
+    height: 35px;
+    background-color: var(--primary-color);
+    border-radius: 10px;
+    width: 30%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.container-login form p {
+    font-size: 12px;
+    color: var(--primary-color);
+}
+
+.container-login form a {
+    font-size: 12px;
+    color: var(--secondary-color);
+    text-decoration: none;
+}
+
+.container-login form a:hover {
+    font-size: 12px;
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+/* Register */
+.container-register {
+    width: 100%;
+    height: 100vh;
+    background-image: url(images/login.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-shadow: inset 0 0 0 2000px rgba(250, 250, 249, 0.185);
+}
+
+.container-register form {
+    background-color: rgba(255, 255, 255, 0.26);
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    padding: 45px;
+    border-radius: 20px;
+    width: 30%;
+}
+
+.container-register form h3 {
+    color: var(--primary-color);
+
+}
+
+.username {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.container-register button {
+    height: 35px;
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+    border: none;
+    border-radius: 10px;
+}
+
+.container-register form input {
+    height: 35px;
+    border-radius: 10px;
+    border: none;
+    padding-left: 10px;
+}
+
+.container-register form label {
+    font-size: 12px;
+    color: var(--primary-color);
+}
+
+.container-register form ::placeholder {
+    opacity: 60%;
+    font-size: 12px;
+}
+
+.socials-login {
+    display: flex;
+    gap: 15px;
+}
+
+.social-back {
+    height: 35px;
+    background-color: var(--primary-color);
+    border-radius: 10px;
+    width: 30%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.container-register form p {
+    font-size: 12px;
+    color: var(--primary-color);
+}
+
+.container-register form a {
+    font-size: 12px;
+    color: var(--secondary-color);
+    text-decoration: none;
+}
+
+.container-register form a:hover {
+    font-size: 12px;
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+.auth-message {
+    display: none;
+    background-color: rgba(255, 0, 0, 0.329);
+    margin-bottom: 15px;
+    width: 15%;
+    height: 40px;
+    padding: 15px;
+    margin-top: 5px;
+}
+
+.message-p {
+    font-size: 14px;
+    color: var(--primary-color);
+}
+
+
+
+/* Admin Dashboard */
+.adminContainer {
+    width: 100%;
+
+    display: flex;
+
+}
+
+.adminContainerLeft {
+    background-color: rgba(0, 0, 0, 0.84);
+    height: 94.25vh;
+    width: 20%;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.adminContainerRight {
+    background-color: #F8F8F8;
+    width: 80%;
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* justify-content: center; */
+    gap: 15px;
+
+    /* height: 94.25vh; */
+}
+
+.admin-user {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.admin-user ion-icon {
+    margin-top: 30px;
+    height: 60px;
+    width: 60px;
+    color: var(--secondary-color);
+
+}
+
+.adminUsername {
+    color: var(--primary-color);
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.adminEmail {
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--secondary-color);
+}
+
+.adminLinks {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 40px;
+    padding-left: 20px;
+}
+
+.adminLink {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.adminLink ion-icon {
+    color: var(--secondary-color);
+    width: 28px;
+    height: 28px;
+}
+
+.adminLink h4 {
+    font-size: 18px;
+    color: var(--primary-color);
+    cursor: pointer;
+
+}
+
+.adminLink h4 a {
+    text-decoration: none;
+}
+
+.adminLink h4:hover {
+    font-size: 18px;
+    color: var(--secondary-color);
+    cursor: pointer;
+
+}
+
+/* Admin landing */
+.home {
+    background-color: var(--primary-color);
+    border-radius: 25px;
+    width: 90%;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    align-items: center;
+    gap: 10px;
+
+}
+
+.first-admin-div,
+.second-admin-div {
+    height: 150px;
+    /* width: 100%; */
+
+    display: flex;
+    gap: 10px;
+}
+
+
+.left-first-div,
+.right-first-div,
+.left-second-div,
+.right-second-div {
+    /* background-color: #ffc10796; */
+    width: 30vw;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    gap: 10px;
+}
+
+.left-first-div,
+.right-second-div {
+    background-color: #ffc1076c;
+}
+
+.right-first-div,
+.left-second-div {
+    background-color: rgba(0, 0, 0, 0.493);
+}
+
+.backgroundForIcon {
+    background-color: #FFC107;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.backgroundForIcon ion-icon {
+    color: var(--primary-color);
+    height: 20px;
+    width: 20px;
+}
+
+.admin-main-links h3 {
+    cursor: pointer;
+}
+
+.toursAdminDiv,
+.hotelsAdminDiv,
+.userAdminDiv,
+.bookingsAdminDiv {
+    background-color: var(--primary-color);
+    border-radius: 25px;
+    width: 90%;
+    /* height: 550px; */
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    display: none;
+    align-items: center;
+}
+
+.adminContainerRight h2 {
+    color: var(--black);
+    font-size: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: 43px;
+}
+
+.users-table,
+.tours-table {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+
+}
+
+#users-table-display,
+#tours-table-display,
+#hotels-table-display {
+    border: none;
+    width: 90%;
+}
+
+#users-table-display th,
+#tours-table-display th,
+#hotels-table-display th {
+    text-align: center;
+    background-color: #ffc10796;
+    font-weight: 700;
+    font-size: 15px;
+    width: 15%;
+    height: 20px;
+}
+
+#users-table-display td,
+#tours-table-display td,
+#hotels-table-display td {
+    text-align: center;
+    background-color: #F8F8F8;
+    font-weight: 300;
+    font-size: 13px;
+    height: 20px;
+}
+
+/* Tours */
+/* Add */
+.add-tours {
+    margin-top: 30px;
+    width: 90%;
+    margin-left: 40px;
+}
+
+.add-tours fieldset {
+    color: var(--secondary-color);
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    border-radius: 10px;
+    gap: 15px;
+}
+
+.add-tours input {
+    height: 35px;
+    border-radius: 10px;
+    border: 1px solid rgba(0, 0, 0, 0.74);
+    padding-left: 15px;
+}
+
+.addTourHotels {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+.addTourHotels ion-icon {
+    cursor: pointer;
+}
+
+.add-tours button {
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+    height: 35px;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+}
+
+
+/* .add-tours legend {
+    color: var(--secondary-color);
+} */
+
+
+
+
+
+
+
+
+/* Hotels */
