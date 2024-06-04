@@ -103,10 +103,11 @@
                                 <th>Destination</th>
                                 <th>Description</th>
                                 <th>Price</th>
+                                <th> </th>
                             </tr>
                         </thead>
                         <tbody class="display-tours">
-                            <tr>
+                            <!-- <tr>
                                 <td>234ghj</td>
                                 <td>Euro Trip</td>
                                 <td>
@@ -120,7 +121,7 @@
                                 <td>Nakuru</td>
                                 <td> Great Experience</td>
                                 <td>52,000</td>
-                            </tr>
+                            </tr> -->
                         </tbody>
                     </table>
 
@@ -155,20 +156,35 @@
                                 <th>Hotel Name</th>
                                 <th>Location</th>
                                 <th>Rating</th>
+                                <th></th>
 
                             </tr>
                         </thead>
-                        <tbody class="display-tours">
-                            <tr>
+                        <tbody class="display-hotels">
+                            <!-- <tr>
                                 <td>234ghj</td>
                                 <td>Panafric</td>
                                 <td>Nakuru</td>
                                 <td> 5 stars</td>
 
-                            </tr>
+                            </tr> -->
                         </tbody>
                     </table>
 
+                </div>
+                <div class="add-hotels">
+                    <div class="edit-user-success-message"></div>
+                    <div class="edit-user-error-message"></div>
+                    <form action="">
+                        <fieldset>
+                            <legend>Add Hotels</legend>
+                            <input type="text" placeholder="Hotel Name" id="hotelInput" required>
+                            <input type="text" placeholder="Image URL" id="hotelImageInput" required>
+                            <input type="text" placeholder="Location" id="hotelLocationInput" required>
+                            <input type="text" placeholder="Rating" id="RatingInput" required>
+                            <button id="addHotel-btn">Add Hotel</button>
+                        </fieldset>
+                    </form>
                 </div>
             </div>
             <div class="userAdminDiv">

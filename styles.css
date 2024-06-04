@@ -125,7 +125,8 @@ h2 {
     gap: 10px;
 }
 
-.username {
+.username,
+.userUsername {
     font-size: 12px;
     font-weight: 700;
     color: var(--secondary-color);
@@ -340,13 +341,24 @@ h2 {
     justify-content: flex-end;
 }
 
-.deleteUserBin {
+.deleteUserBin,
+.deleteToursBin,
+.deleteHotelsBin {
     color: red;
     height: 23px;
     width: 23px;
     cursor: pointer;
 }
 
+
+
+.updateTour,
+.updateHotel {
+    color: green;
+    height: 23px;
+    width: 23px;
+    cursor: pointer;
+}
 
 .edit-user-header {
     display: flex;
@@ -451,7 +463,7 @@ footer {
 }
 
 .get-in-touch ion-icon {
-    color: rgba(6, 171, 236, 0.781);
+    color: var(--primary-color);
     height: 15px;
     width: 15px;
     padding-right: 5px;
@@ -477,6 +489,7 @@ footer {
     gap: 250px;
     height: 50px;
     align-items: center;
+    background-color: var(--secondary-color);
 }
 
 .copyright p {
@@ -485,7 +498,7 @@ footer {
 }
 
 .socials ion-icon {
-    color: rgba(6, 171, 236, 0.781);
+    color: var(--primary-color);
     height: 15px;
     width: 15px;
 }
@@ -900,6 +913,13 @@ footer {
     width: 90%;
 }
 
+
+.addTourHotels {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
 #users-table-display th,
 #tours-table-display th,
 #hotels-table-display th {
@@ -923,13 +943,15 @@ footer {
 
 /* Tours */
 /* Add */
-.add-tours {
+.add-tours,
+.add-hotels {
     margin-top: 30px;
     width: 90%;
     margin-left: 40px;
 }
 
-.add-tours fieldset {
+.add-tours fieldset,
+.add-hotels fieldset {
     color: var(--secondary-color);
     display: flex;
     flex-direction: column;
@@ -938,23 +960,16 @@ footer {
     gap: 15px;
 }
 
-.add-tours input {
+.add-tours input,
+.add-hotels input {
     height: 35px;
     border-radius: 10px;
     border: 1px solid rgba(0, 0, 0, 0.74);
     padding-left: 15px;
 }
 
-.addTourHotels {
-    display: flex;
-    gap: 15px;
-    align-items: center;
-}
 
-.addTourHotels ion-icon {
-    cursor: pointer;
-}
-
+.add-hotels button,
 .add-tours button {
     background-color: var(--secondary-color);
     color: var(--primary-color);
@@ -965,15 +980,209 @@ footer {
 }
 
 
-/* .add-tours legend {
+/* USER DASHBOARD */
+.userDashContainer {
+    height: 100%;
+    width: 100%;
+    background-color: var(--primary-color);
+    display: flex;
+    flex-direction: column;
+}
+
+.user-nav {
+    height: 60px;
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.logo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+}
+
+.logo h1 {
+    color: var(--black);
+    font-size: 30px;
+}
+
+.logo h2 {
+    color: var(--black);
+    font-size: 12px;
+}
+
+.user-nav-links {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.user-nav-links h4 {
     color: var(--secondary-color);
-} */
+    font-weight: 700;
+    font-size: 15px;
+}
+
+.user-nav-links a {
+    text-decoration: none;
+    color: var(--secondary-color);
+}
+
+.nav-username {
+    display: flex;
+    align-items: center;
+}
+
+.nav-username ion-icon {
+    color: var(--secondary-color);
+}
+
+hr {
+    color: rgba(0, 0, 0, 0.555);
+}
+
+.user-nav-links h4 {
+    cursor: pointer;
+}
+
+
+.mainContainerUser {
+    /* height: 100vh;*/
+    width: 100vw;
+    border-color: 2px solid salmon;
+}
+
+.toursUserDiv,
+.bookingsUserDiv {
+    background-color: var(--primary-color);
+    border-radius: 25px;
+    width: 90%;
+    /* height: 550px; */
+    /* display: flex; */
+    flex-direction: column;
+    padding: 20px;
+    display: none;
+    align-items: center;
+}
+
+.hotelsUserDiv {
+    background-color: var(--primary-color);
+    border-radius: 25px;
+    width: 90%;
+    /* height: 550px; */
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    /* display: block; */
+    align-items: center;
+
+}
+
+.mainContainerUser h2 {
+    color: var(--black);
+    font-size: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: 43px;
+}
 
 
 
+/* User Dashboard Hotels */
+.hotels-all-display,
+.tours-display-all {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    width: 80%;
+    /* border-color: 2px solid black; */
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+
+}
+
+.hotel-all-container {
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+}
+
+.image-hotels img {
+    width: 100%;
+    height: 200px;
+}
+
+.each-hotel-details {
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.hotels-all-display h4 {
+    font-size: 20px;
+}
 
 
+.last-thing-hotel {
+    display: flex;
+    gap: 40px;
+    align-items: center;
+}
+
+.last-thing-hotel p {
+    font-size: 14px;
+}
+
+.rating {
+    font-weight: 400;
+    font-size: 14px;
+}
+
+/* Tours */
+.tour-all-container {
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+}
+
+.image-tours img {
+    width: 100%;
+    height: 200px;
+}
+
+.each-tour-details {
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.tours-all-display h4 {
+    font-size: 20px;
+}
 
 
+.last-thing-tour {
+    display: flex;
+    gap: 40px;
+    align-items: center;
+}
 
-/* Hotels */
+.last-thing-tour p {
+    font-size: 14px;
+}
+
+.last-thing-tour button {
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+    height: 35px;
+    width: 100px;
+    border: none;
+}
+
+.last-thing-tour button:hover {
+    background-color: transparent;
+    border: 1px solid var(--black);
+    color: var(--black);
+}

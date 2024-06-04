@@ -1,0 +1,18 @@
+{
+  "users": [
+    {
+      "id": "766b",
+      "username": "Edith",
+      "email": "gitongasally4@gmail.com",
+      "password": "12345678",
+      "role": "admin"
+    },
+    {
+      "id": "29d1",
+      "username": "Mulandi",
+      "email": "jenstechnologies@gmail.com",
+      "password": "12345678",
+      "role": "admin"
+    }
+  ]
+}

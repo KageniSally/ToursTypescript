@@ -253,80 +253,430 @@ const usersInstance = Users.getInstance();
 usersInstance.displayUsers();
 
 
-//Add Tours
+//Tours Service
 let baseURLToursAdmin = "http://localhost:3000/tours"
-
-
 interface toursInterface {
+    id: string;
     name: string;
     image: string;
     destination: string;
     description: string;
     price: string;
-    hotels: []
+    hotels: string[]
 }
 
+const errorMessageTours = document.querySelector(".edit-user-error-message")! as HTMLDivElement;
+const successMessageTours = document.querySelector(".edit-user-success-message")! as HTMLDivElement;
+
+const tourNameInput = document.getElementById("tourInput")! as HTMLInputElement;
+const tourImageURLInput = document.getElementById("imageInput")! as HTMLInputElement;
+const destinationInput = document.getElementById("destinationInput")! as HTMLInputElement;
+const descriptionInput = document.getElementById("descriptionInput")! as HTMLInputElement;
+const priceInput = document.getElementById("priceInput")! as HTMLInputElement;
+const addTourButton = document.getElementById("addTour-btn")! as HTMLButtonElement;
+
+const hotels: string[] = [];
 class Tours {
-    async getTours() {
+    async addTours() {
 
-        //Message Div
-        const errorMessageTours = document.querySelector(".edit-user-error-message")! as HTMLDivElement
-        const successMessageTours = document.querySelector(".edit-user-success-message")! as HTMLDivElement
 
-        const tourNameInput = document.getElementById("tourInput")! as HTMLInputElement
-        const tourImageURLInput = document.getElementById("imageInput")! as HTMLInputElement
-        const destinationInputInput = document.getElementById("destinationInput")! as HTMLInputElement
-        const descriptionInput = document.getElementById("descriptionInput")! as HTMLInputElement
-        const priceInput = document.getElementById("priceInput")! as HTMLInputElement
-
-        const addTourHotels = document.getElementById("addTourHotels")! as HTMLElement
-        const addTourButton = document.getElementById("addTour-btn")! as HTMLButtonElement
-        let hotelName = addTourHotels.addEventListener('click', () => {
-            prompt("input name of hotel")
-        })
-
-        console.log(hotelName)
+        document.getElementById("addTourHotels")!.addEventListener('click', (e) => {
+            e.preventDefault();
+            const hotelName = prompt("Input name of hotel");
+            if (hotelName) {
+                hotels.push(hotelName);
+            }
+        });
 
         addTourButton.addEventListener('click', async (e) => {
-            e.preventDefault()
-            const tourName = tourNameInput.value.trim()
-            const tourImage = tourImageURLInput.value.trim()
-            const tourDestination = destinationInputInput.value.trim()
-            const tourDescription = descriptionInput.value.trim()
-            const tourPrice = priceInput.value.trim()
-            const hotels = []
-            hotels.push(hotelName)
-
-            const newTour = {
-                tourName,
-                tourImage,
-                tourDescription,
-                tourDestination,
-                tourPrice,
-                hotels: []
+            e.preventDefault();
+            const tour = await this.getTours();
+            const tourDetails: toursInterface = {
+                id: tour.id,
+                name: tourNameInput.value,
+                image: tourImageURLInput.value,
+                destination: destinationInput.value,
+                description: descriptionInput.value,
+                price: priceInput.value,
+                hotels
+            };
+            if (addTourButton.textContent === "Add Tour") {
+                try {
+                    await fetch(baseURLToursAdmin, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify(tourDetails)
+                    });
+                    successMessageTours.textContent = 'Tour successfully added';
+                    successMessageTours.style.display = 'block';
+                    errorMessageTours.style.display = 'none';
+                    this.displayTours()
+                } catch (error) {
+                    errorMessageTours.textContent = 'Failed to add tour';
+                    errorMessageTours.style.display = 'block';
+                    successMessageTours.style.display = 'none';
+                    console.error(error);
+                }
+            } else if (addTourButton.textContent === 'Edit Tour') {
+                await this.updateTour()
             }
-
-            const response = await fetch(baseURLToursAdmin, {
-                method: "POST",
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(newTour)
-            })
-            if (response.ok) {
-                successMessageTours.style.display = "block"
-                successMessageTours.innerHTML = `<p class="messageP">Tour Added Successfully</p>`
-                setTimeout(() => {
-                    successMessageTours.style.display = "none"
-                }, 3000)
-
-            } else {
-                errorMessageTours.style.display = "block"
-                errorMessageTours.innerHTML = `<p class="messageP">Tour Failed to Add</p>`
-            }
-
-        })
-
-
+            this.displayTours()
+            tourNameInput.value = ''
+            destinationInput.value = ''
+            descriptionInput.value = ' '
+            priceInput.value = ''
+            tourImageURLInput.value = ' '
+        });
     }
+
+    private async getTours(): Promise<toursInterface[]> {
+        try {
+            const response = await fetch(baseURLToursAdmin)
+            const tours = await response.json()
+            return tours
+        }
+        catch (error) {
+            return []
+        }
+    }
+
+
+    public async displayTours(): Promise<void> {
+        const tours = await this.getTours();
+        const tbody = document.querySelector(".display-tours")! as HTMLTableSectionElement;
+        tbody.innerHTML = '';
+
+        if (!tours.length) {
+            console.error('No Tours found');
+        } else {
+            tours.forEach(tour => {
+                const tr = document.createElement('tr');
+                const tourIdColumn = document.createElement('td');
+                tourIdColumn.textContent = tour.id;
+                const tourNameColumn = document.createElement('td');
+                tourNameColumn.textContent = tour.name;
+                const tourHotelsColumn = document.createElement('td');
+
+                const hotelSelect = document.createElement('select');
+
+                tour.hotels.forEach(hotel => {
+                    const option = document.createElement('option');
+                    option.value = hotel;
+                    option.textContent = hotel;
+                    hotelSelect.appendChild(option);
+                });
+
+
+                hotelSelect.value = tour.hotels[0];
+
+                tourHotelsColumn.appendChild(hotelSelect);
+
+                const tourDestColumn = document.createElement('td');
+                tourDestColumn.textContent = tour.destination;
+                const tourDescColumn = document.createElement('td');
+                tourDescColumn.textContent = tour.description;
+                const tourPriceColumn = document.createElement('td');
+                tourPriceColumn.textContent = tour.price;
+                const tourDeleteColumn = document.createElement('td')
+
+                // const updateTour = document.createAttribute('ion-icon')
+                // updateTour.setAttribute('name', 'pencil')
+                // updateTour.classList.add('updateTour')
+                const updateTour = document.createElement('ion-icon');
+                updateTour.setAttribute('name', 'pencil');
+                updateTour.classList.add('updateTour');
+                updateTour.addEventListener('click', async (e) => {
+                    e.preventDefault()
+                    await this.prepopulate(tour.id, tour.name, tour.description, tour.destination, tour.image, tour.price, tour.hotels)
+
+                })
+
+
+                const deleteTourBin = document.createElement('ion-icon')
+                deleteTourBin.setAttribute('name', 'trash-outline')
+                deleteTourBin.classList.add('deleteToursBin')
+                deleteTourBin.addEventListener('click', async (e) => {
+                    e.preventDefault()
+                    await this.deleteTour(tour.id)
+                })
+                tourDeleteColumn.appendChild(deleteTourBin)
+                tourDeleteColumn.appendChild(updateTour)
+
+                tr.appendChild(tourIdColumn);
+                tr.appendChild(tourNameColumn);
+                tr.appendChild(tourHotelsColumn);
+                tr.appendChild(tourDestColumn);
+                tr.appendChild(tourDescColumn);
+                tr.appendChild(tourPriceColumn);
+                tr.appendChild(tourDeleteColumn);
+
+
+                tbody.appendChild(tr);
+            });
+        }
+    }
+
+    private async deleteTour(tourId: string): Promise<void> {
+        try {
+            await fetch(`${baseURLToursAdmin}/${tourId}`, {
+                method: 'DELETE',
+                headers: { 'Content-type': 'application/json' }
+            })
+            this.displayTours()
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+
+
+    private async prepopulate(id: string, name: string, description: string, destination: string, image: string, price: string, hotels: string[]) {
+        tourNameInput.value = name;
+        tourImageURLInput.value = image;
+        descriptionInput.value = description;
+        destinationInput.value = destination;
+        priceInput.value = price;
+        addTourButton.textContent = 'Edit Tour'
+
+
+        const hotelSelect = document.getElementById("hotelSelect") as HTMLSelectElement;
+        hotelSelect.innerHTML = "";
+
+
+        hotels.forEach(hotel => {
+            const option = document.createElement('option');
+            option.value = hotel;
+            option.textContent = hotel;
+            hotelSelect.appendChild(option);
+        });
+
+
+        hotelSelect.value = hotels[0];
+    }
+
+    private async updateTour(): Promise<void> {
+        const tourId = addTourButton.getAttribute("data-id");
+
+        if (!tourId) {
+            console.error("Tour ID is missing");
+            return;
+        }
+
+        const updateTour: toursInterface = {
+            id: tourId,
+            name: tourNameInput.value,
+            image: tourImageURLInput.value,
+            destination: destinationInput.value,
+            description: descriptionInput.value,
+            price: priceInput.value,
+            hotels: Array.from((document.getElementById("hotelSelect") as HTMLSelectElement).selectedOptions).map(option => option.value)
+        };
+
+        try {
+            await fetch(`${baseURLToursAdmin}/${tourId}`, {
+                method: 'PUT',
+                headers: { 'Content-type': 'application/json' },
+                body: JSON.stringify(updateTour)
+            });
+
+            addTourButton.textContent = 'Add Tour';
+            addTourButton.removeAttribute("data-id");
+            this.displayTours();
+        } catch (error) {
+            console.error("Failed to update tour", error);
+        }
+    }
+
+
 }
 let tours = new Tours()
-tours.getTours()
+tours.addTours()
+tours.displayTours()
+
+
+
+
+
+let baseURLHotelsAdmin = "http://localhost:3000/hotels"
+
+interface HotelInterface {
+    id?: string;
+    name: string;
+    image: string;
+    location: string;
+    rating: string;
+}
+
+const errorMessageHotels = document.querySelector(".edit-hotel-error-message")! as HTMLDivElement;
+const successMessageHotels = document.querySelector(".edit-hotel-success-message")! as HTMLDivElement;
+
+const hotelNameInput = document.getElementById("hotelInput")! as HTMLInputElement;
+const hotelImageURLInput = document.getElementById("hotelImageInput")! as HTMLInputElement;
+const hotelLocationInput = document.getElementById("hotelLocationInput")! as HTMLInputElement;
+const hotelRatingInput = document.getElementById("RatingInput")! as HTMLInputElement;
+const addHotelButton = document.getElementById("addHotel-btn")! as HTMLButtonElement;
+
+class Hotels {
+    async addHotels() {
+        addHotelButton.addEventListener('click', async (e) => {
+            e.preventDefault();
+
+            const hotelDetails: HotelInterface = {
+                name: hotelNameInput.value,
+                image: hotelImageURLInput.value,
+                location: hotelLocationInput.value,
+                rating: hotelRatingInput.value
+            };
+
+            if (addHotelButton.textContent === "Add Hotel") {
+                try {
+                    await fetch(baseURLHotelsAdmin, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify(hotelDetails)
+                    });
+                    successMessageHotels.textContent = 'Hotel successfully added';
+                    successMessageHotels.style.display = 'block';
+                    errorMessageHotels.style.display = 'none';
+                    this.displayHotels();
+                } catch (error) {
+                    errorMessageHotels.textContent = 'Failed to add hotel';
+                    errorMessageHotels.style.display = 'block';
+                    successMessageHotels.style.display = 'none';
+                    console.error(error);
+                }
+            } else if (addHotelButton.textContent === 'Edit Hotel') {
+                await this.updateHotel();
+            }
+            this.clearForm();
+        });
+    }
+
+    private async getHotels(): Promise<HotelInterface[]> {
+        try {
+            const response = await fetch(baseURLHotelsAdmin);
+            const hotels = await response.json();
+            return hotels;
+        } catch (error) {
+            console.error('Failed to fetch hotels', error);
+            return [];
+        }
+    }
+
+    public async displayHotels(): Promise<void> {
+        const hotels = await this.getHotels();
+        const tbody = document.querySelector(".display-hotels")! as HTMLTableSectionElement;
+        tbody.innerHTML = '';
+
+        if (!hotels.length) {
+            console.error('No Hotels found');
+        } else {
+            hotels.forEach(hotel => {
+                const tr = document.createElement('tr');
+                const hotelIdColumn = document.createElement('td');
+                hotelIdColumn.textContent = hotel.id || 'N/A';
+                const hotelNameColumn = document.createElement('td');
+                hotelNameColumn.textContent = hotel.name;
+                const hotelLocationColumn = document.createElement('td');
+                hotelLocationColumn.textContent = hotel.location;
+                const hotelRatingColumn = document.createElement('td');
+                hotelRatingColumn.textContent = hotel.rating;
+                const hotelDeleteColumn = document.createElement('td');
+
+                const updateHotel = document.createElement('ion-icon');
+                updateHotel.setAttribute('name', 'pencil');
+                updateHotel.classList.add('updateHotel');
+                updateHotel.addEventListener('click', async (e) => {
+                    e.preventDefault();
+                    this.prepopulate(hotel.id!, hotel.name, hotel.location, hotel.rating, hotel.image);
+                });
+
+                const deleteHotelBin = document.createElement('ion-icon');
+                deleteHotelBin.setAttribute('name', 'trash-outline');
+                deleteHotelBin.classList.add('deleteHotelsBin');
+                deleteHotelBin.addEventListener('click', async (e) => {
+                    e.preventDefault();
+                    await this.deleteHotel(hotel.id!);
+                });
+
+                hotelDeleteColumn.appendChild(deleteHotelBin);
+                hotelDeleteColumn.appendChild(updateHotel);
+
+                tr.appendChild(hotelIdColumn);
+                tr.appendChild(hotelNameColumn);
+                tr.appendChild(hotelLocationColumn);
+                tr.appendChild(hotelRatingColumn);
+                tr.appendChild(hotelDeleteColumn);
+
+                tbody.appendChild(tr);
+            });
+        }
+    }
+
+    private async deleteHotel(hotelId: string): Promise<void> {
+        try {
+            await fetch(`${baseURLHotelsAdmin}/${hotelId}`, {
+                method: 'DELETE',
+                headers: { 'Content-type': 'application/json' }
+            });
+            this.displayHotels();
+        } catch (error) {
+            console.error('Failed to delete hotel', error);
+        }
+    }
+
+    private async prepopulate(id: string, name: string, location: string, rating: string, image: string) {
+        hotelNameInput.value = name;
+        hotelImageURLInput.value = image;
+        hotelLocationInput.value = location;
+        hotelRatingInput.value = rating;
+        addHotelButton.textContent = 'Edit Hotel';
+        addHotelButton.setAttribute("data-id", id);
+    }
+
+    private async updateHotel(): Promise<void> {
+        const hotelId = addHotelButton.getAttribute("data-id");
+
+        if (!hotelId) {
+            console.error("Hotel ID is missing");
+            return;
+        }
+
+        const updateHotel: HotelInterface = {
+            id: hotelId,
+            name: hotelNameInput.value,
+            image: hotelImageURLInput.value,
+            location: hotelLocationInput.value,
+            rating: hotelRatingInput.value
+        };
+
+        try {
+            await fetch(`${baseURLHotelsAdmin}/${hotelId}`, {
+                method: 'PUT',
+                headers: { 'Content-type': 'application/json' },
+                body: JSON.stringify(updateHotel)
+            });
+
+            addHotelButton.textContent = 'Add Hotel';
+            addHotelButton.removeAttribute("data-id");
+            this.displayHotels();
+        } catch (error) {
+            console.error("Failed to update hotel", error);
+        }
+    }
+
+    private clearForm(): void {
+        hotelNameInput.value = '';
+        hotelImageURLInput.value = '';
+        hotelLocationInput.value = '';
+        hotelRatingInput.value = '';
+    }
+}
+
+let hotelsInstance = new Hotels();
+hotelsInstance.addHotels();
+hotelsInstance.displayHotels();

@@ -54,7 +54,8 @@ class User {
     private async getUser(username: string): Promise<userInterface | null> {
         try {
             const response = await fetch(`${baseURLUsersIndex}?username=${username}`)
-            const user = await response.json()
+            const users: userInterface[] = await response.json()
+            let user: userInterface = users[0]
             return user
 
         } catch (error) {
@@ -66,7 +67,7 @@ class User {
     }
 
 
-    public async displayUserInfo(): Promise<void> {
+    public async displayUserInfo() {
         let currentUser = sessionStorage.getItem("username");
         if (!currentUser) {
             console.log("user doesn't exist")
@@ -78,7 +79,6 @@ class User {
         const emailInput = document.querySelector('.emailInput')! as HTMLInputElement
         const usernameInput = document.querySelector('.usernameInput')! as HTMLInputElement
 
-        console.log(user);
         emailInput.value = user.email
         usernameInput.value = user.username
 
