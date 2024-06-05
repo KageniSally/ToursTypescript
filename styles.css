@@ -1186,3 +1186,117 @@ hr {
     border: 1px solid var(--black);
     color: var(--black);
 }
+
+/* Form Book Tour */
+.make-booking {
+    position: fixed;
+    top: 12%;
+    right: -350px;
+    width: 350px;
+    height: 65%;
+    background-color: rgba(0, 0, 0, 0.726);
+    /* transition: right 0.3s ease; */
+    /* z-index: 1000; */
+    display: flex;
+    flex-direction: column;
+    /* border-radius: 20px; */
+}
+
+.make-booking.open {
+    right: 0;
+}
+
+.booking-success-message {
+    width: 83%;
+    position: fixed;
+    display: none;
+    height: 35px;
+    border-radius: 10px;
+    padding: 10px;
+    background-color: rgba(6, 202, 6, 0.589);
+    position: fixed;
+}
+
+.booking-error-message {
+    width: 83%;
+    position: absolute;
+    display: none;
+    height: 35px;
+    border-radius: 10px;
+    background-color: rgba(202, 19, 6, 0.589);
+    padding: 10px;
+}
+
+.messageP {
+    font-size: 12px;
+    color: var(--primary-color);
+}
+
+.book-tour-header {
+    display: flex;
+    gap: 30px;
+    align-items: center;
+    background-color: var(--secondary-color);
+}
+
+#closeBookTourButton {
+    background: none;
+    border: none;
+    color: var(--primary-color);
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.make-booking label {
+    color: var(--primary-color);
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.make-booking-body {
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.tour-name {
+    display: flex;
+    justify-content: space-between;
+}
+
+.make-booking-body p {
+    color: var(--secondary-color);
+}
+
+.booking-hotel,
+.number-of-people,
+.date {
+    display: flex;
+    flex-direction: column;
+}
+
+.make-booking-body select {
+    height: 35px;
+    border-radius: 10px;
+    background-color: transparent;
+    border: 1px solid var(--primary-color);
+    color: var(--secondary-color);
+}
+
+.make-booking-body input {
+    height: 35px;
+    border-radius: 10px;
+    background-color: transparent;
+    border: 1px solid var(--primary-color);
+    color: var(--primary-color);
+    padding-left: 10px;
+}
+
+.make-booking-body button {
+    height: 35px;
+    border: none;
+    border-radius: 10px;
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+}

@@ -13,6 +13,20 @@
       "email": "jenstechnologies@gmail.com",
       "password": "12345678",
       "role": "admin"
+    },
+    {
+      "id": "291d",
+      "email": "gitongasally4@gmail.com",
+      "username": "sally.gitonga20@students.dkut.ac.ke",
+      "password": "12345678",
+      "role": "customer"
+    },
+    {
+      "id": "b6d2",
+      "email": "gitongasally4@gmail.com",
+      "username": "Sally Gitonga",
+      "password": "12345678",
+      "role": "customer"
     }
   ]
 }

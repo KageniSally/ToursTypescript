@@ -578,7 +578,7 @@ class Hotels {
             hotels.forEach(hotel => {
                 const tr = document.createElement('tr');
                 const hotelIdColumn = document.createElement('td');
-                hotelIdColumn.textContent = hotel.id || 'N/A';
+                hotelIdColumn.textContent = hotel.id || "";
                 const hotelNameColumn = document.createElement('td');
                 hotelNameColumn.textContent = hotel.name;
                 const hotelLocationColumn = document.createElement('td');
