@@ -608,3 +608,83 @@ class Hotels {
 let hotelsInstance = new Hotels();
 hotelsInstance.addHotels();
 hotelsInstance.displayHotels();
+let baseURLBookingsAdmin = "http://localhost:3000/bookings";
+class Bookings {
+    getBookings() {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                const response = yield fetch(baseURLBookingsAdmin);
+                const bookings = yield response.json();
+                console.log(bookings);
+                return bookings;
+            }
+            catch (error) {
+                console.error(error);
+                return [];
+            }
+        });
+    }
+    displayBookings() {
+        return __awaiter(this, void 0, void 0, function* () {
+            const bookings = yield this.getBookings();
+            const tbody = document.querySelector(".display-bookings");
+            tbody.innerHTML = '';
+            if (!bookings.length) {
+                console.error('No Bookings found');
+            }
+            else {
+                bookings.forEach(booking => {
+                    const tr = document.createElement('tr');
+                    const bookingIdColumn = document.createElement('td');
+                    bookingIdColumn.textContent = booking.id;
+                    const usernameColumn = document.createElement('td');
+                    usernameColumn.textContent = booking.username;
+                    const tourColumn = document.createElement('td');
+                    tourColumn.textContent = booking.tour;
+                    const hotelColumn = document.createElement('td');
+                    hotelColumn.textContent = booking.hotel;
+                    const startDateColumn = document.createElement('td');
+                    startDateColumn.textContent = booking.startDate;
+                    const endDateColumn = document.createElement('td');
+                    endDateColumn.textContent = booking.endDate;
+                    const priceColumn = document.createElement('td');
+                    priceColumn.textContent = booking.price;
+                    const bookingDeleteColumn = document.createElement('td');
+                    const deleteBookingBin = document.createElement('ion-icon');
+                    deleteBookingBin.setAttribute('name', 'trash-outline');
+                    deleteBookingBin.classList.add('deleteBookingBin');
+                    deleteBookingBin.addEventListener('click', (e) => __awaiter(this, void 0, void 0, function* () {
+                        e.preventDefault();
+                        yield this.deleteBooking(booking.id);
+                    }));
+                    bookingDeleteColumn.appendChild(deleteBookingBin);
+                    tr.appendChild(bookingIdColumn);
+                    tr.appendChild(usernameColumn);
+                    tr.appendChild(tourColumn);
+                    tr.appendChild(hotelColumn);
+                    tr.appendChild(startDateColumn);
+                    tr.appendChild(endDateColumn);
+                    tr.appendChild(priceColumn);
+                    tr.appendChild(bookingDeleteColumn);
+                    tbody.appendChild(tr);
+                });
+            }
+        });
+    }
+    deleteBooking(bookingId) {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                yield fetch(`${baseURLBookingsAdmin}/${bookingId}`, {
+                    method: 'DELETE',
+                    headers: { 'Content-type': 'application/json' }
+                });
+                this.displayBookings();
+            }
+            catch (error) {
+                console.log(error);
+            }
+        });
+    }
+}
+let displayBookingsAdmin = new Bookings();
+displayBookingsAdmin.displayBookings();

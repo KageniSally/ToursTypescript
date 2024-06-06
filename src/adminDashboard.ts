@@ -680,3 +680,107 @@ class Hotels {
 let hotelsInstance = new Hotels();
 hotelsInstance.addHotels();
 hotelsInstance.displayHotels();
+
+
+let baseURLBookingsAdmin = "http://localhost:3000/bookings";
+
+interface BookingInterface {
+    id: string;
+    username: string;
+    tour: string;
+    hotel: string;
+    startDate: string;
+    endDate: string;
+    people: number;
+    price: string;
+}
+
+class Bookings {
+    private async getBookings(): Promise<BookingInterface[]> {
+        try {
+            const response = await fetch(baseURLBookingsAdmin);
+            const bookings = await response.json();
+            console.log(bookings);
+            return bookings;
+        } catch (error) {
+            console.error(error);
+            return [];
+        }
+    }
+
+    public async displayBookings(): Promise<void> {
+        const bookings = await this.getBookings();
+        const tbody = document.querySelector(".display-bookings")! as HTMLTableSectionElement;
+        tbody.innerHTML = '';
+
+        if (!bookings.length) {
+            console.error('No Bookings found');
+        } else {
+            bookings.forEach(booking => {
+                const tr = document.createElement('tr');
+                const bookingIdColumn = document.createElement('td');
+                bookingIdColumn.textContent = booking.id;
+                const usernameColumn = document.createElement('td');
+                usernameColumn.textContent = booking.username;
+                const tourColumn = document.createElement('td');
+                tourColumn.textContent = booking.tour
+
+                const hotelColumn = document.createElement('td');
+                hotelColumn.textContent = booking.hotel
+
+                const startDateColumn = document.createElement('td');
+                startDateColumn.textContent = booking.startDate
+
+                const endDateColumn = document.createElement('td');
+                endDateColumn.textContent = booking.endDate
+
+                const priceColumn = document.createElement('td');
+                priceColumn.textContent = booking.price
+
+                const bookingDeleteColumn = document.createElement('td')
+
+
+
+                const deleteBookingBin = document.createElement('ion-icon')
+                deleteBookingBin.setAttribute('name', 'trash-outline')
+                deleteBookingBin.classList.add('deleteBookingBin')
+                deleteBookingBin.addEventListener('click', async (e) => {
+                    e.preventDefault()
+                    await this.deleteBooking(booking.id)
+                })
+                bookingDeleteColumn.appendChild(deleteBookingBin)
+
+
+                tr.appendChild(bookingIdColumn);
+                tr.appendChild(usernameColumn);
+                tr.appendChild(tourColumn);
+                tr.appendChild(hotelColumn);
+                tr.appendChild(startDateColumn);
+                tr.appendChild(endDateColumn);
+                tr.appendChild(priceColumn);
+                tr.appendChild(bookingDeleteColumn)
+
+
+                tbody.appendChild(tr);
+            });
+        }
+    }
+
+    private async deleteBooking(bookingId: string): Promise<void> {
+        try {
+            await fetch(`${baseURLBookingsAdmin}/${bookingId}`, {
+                method: 'DELETE',
+                headers: { 'Content-type': 'application/json' }
+            })
+            this.displayBookings()
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+
+}
+
+let displayBookingsAdmin = new Bookings();
+displayBookingsAdmin.displayBookings();
+

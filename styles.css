@@ -343,7 +343,8 @@ h2 {
 
 .deleteUserBin,
 .deleteToursBin,
-.deleteHotelsBin {
+.deleteHotelsBin,
+.deleteBookingBin {
     color: red;
     height: 23px;
     width: 23px;
@@ -899,7 +900,8 @@ footer {
 }
 
 .users-table,
-.tours-table {
+.tours-table,
+.bookings-table {
     display: flex;
     justify-content: center;
     width: 100%;
@@ -908,7 +910,8 @@ footer {
 
 #users-table-display,
 #tours-table-display,
-#hotels-table-display {
+#hotels-table-display,
+#bookings-table-display {
     border: none;
     width: 90%;
 }
@@ -922,7 +925,8 @@ footer {
 
 #users-table-display th,
 #tours-table-display th,
-#hotels-table-display th {
+#hotels-table-display th,
+#bookings-table-display th {
     text-align: center;
     background-color: #ffc10796;
     font-weight: 700;
@@ -933,7 +937,8 @@ footer {
 
 #users-table-display td,
 #tours-table-display td,
-#hotels-table-display td {
+#hotels-table-display td,
+#bookings-table-display td {
     text-align: center;
     background-color: #F8F8F8;
     font-weight: 300;
@@ -1094,7 +1099,8 @@ hr {
 
 /* User Dashboard Hotels */
 .hotels-all-display,
-.tours-display-all {
+.tours-display-all,
+.bookings-all-display {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     width: 80%;
@@ -1299,4 +1305,45 @@ hr {
     border-radius: 10px;
     background-color: var(--secondary-color);
     color: var(--primary-color);
+}
+
+
+/* Bookings */
+.each-booking {
+    display: flex;
+    flex-direction: column;
+    padding: 25px;
+    gap: 10px;
+    border: 2px solid var(--secondary-color);
+    border-radius: 10px;
+}
+
+.each-booking h5 {
+    font-weight: 400;
+}
+
+.dates-booking {
+    display: flex;
+    justify-content: space-between;
+}
+
+.date-booking {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.last-part-booking {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.last-part-booking button {
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+    border-radius: 5px;
+    height: 35px;
+    padding: 5px;
+    border: none;
 }

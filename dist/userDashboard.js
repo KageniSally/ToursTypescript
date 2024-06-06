@@ -270,8 +270,56 @@ closeBookingFormButton.addEventListener('click', (e) => {
     makeBooking.classList.remove('open');
 });
 let baseURLBookingsUser = 'http://localhost:3000/bookings';
-class BookingsUser {
-    addBooking() {
-        // Booking logic here
+class BookingsUsers {
+    getBookings() {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                const response = yield fetch(baseURLBookingsUser);
+                const bookings = yield response.json();
+                console.log(bookings);
+                return bookings;
+            }
+            catch (error) {
+                console.error('Failed to fetch bookings', error);
+                return [];
+            }
+        });
+    }
+    displayBookings() {
+        return __awaiter(this, void 0, void 0, function* () {
+            const bookings = yield this.getBookings();
+            const bookingsDisplay = document.querySelector(".bookings-all-display");
+            let html = '';
+            if (!bookings.length) {
+                html = `<p>No Hotels Found</p>`;
+            }
+            else {
+                bookings.forEach(booking => {
+                    html += `
+                <div class="each-booking">
+                <h4>${booking.tour}</h4>
+                <h6>${booking.hotel}</h4>
+                <div class="dates-booking">
+                    <div class="date-booking">
+                        <h5>Start Date</p>
+                            <p>${booking.startDate}</p>
+                    </div>
+                    <div class="date-booking">
+                        <h5>End Date</p>
+                            <p>${booking.endDate}</p>
+                    </div>
+                </div>
+                <div class="last-part-booking">
+                    <p>Ksh ${booking.price}</p>
+                    <button>Edit Booking</button>
+                </div>
+            </div>
+                    `;
+                });
+            }
+            bookingsDisplay.innerHTML = html;
+        });
     }
 }
+let displayBookingsUsers = new BookingsUsers();
+displayBookingsUsers.displayBookings();
