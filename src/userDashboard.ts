@@ -111,7 +111,7 @@ displayHotelsUser.displayHotels();
 // Tours
 let baseURLToursUsers = "http://localhost:3000/tours";
 interface toursInterface {
-    id: string;
+    id?: string;
     name: string;
     image: string;
     destination: string;
@@ -180,7 +180,7 @@ class ToursUsers {
                 bookingButton.textContent = 'Book Now';
                 bookingButton.onclick = () => {
                     makeBooking.classList.add('open');
-                    this.setTourDetails(tour.id, tour.name, tour.price, tour.destination, tour.hotels);
+                    this.setTourDetails(tour.name, tour.price, tour.destination, tour.hotels);
                 };
 
                 toursDisplay.appendChild(eachTourContainer);
@@ -197,7 +197,7 @@ class ToursUsers {
         }
     }
 
-    setTourDetails(id: string, name: string, price: string, destination: string, hotels: string[]) {
+    setTourDetails(name: string, price: string, destination: string, hotels: string[]) {
         const tourNameBooking = document.querySelector('.tour-name-booking')! as HTMLLabelElement;
         const tourPriceBooking = document.querySelector('.tour-price-booking')! as HTMLParagraphElement;
         const numberOfPeople = document.querySelector('.numberOfPeople')! as HTMLInputElement;
@@ -231,16 +231,7 @@ class ToursUsers {
                 price: price
             }
             this.addBooking(bookingDetails)
-            // this.addBooking({
-            //     id: booking.id,
-            //     username: usernameUser,
-            //     tour: name,
-            //     hotel: selectedHotel,
-            //     startDate: startingDate,
-            //     endDate: endDate,
-            //     people: numberOfPeopleValue,
-            //     price: price
-            // });
+
         };
     }
 
@@ -286,7 +277,7 @@ class ToursUsers {
             makeBooking.classList.remove('open');
         } catch (error) {
             console.error('Failed to add booking', error);
-            alert('Failed to make booking');
+
         }
     }
 }
@@ -314,9 +305,10 @@ interface booking {
 }
 
 class BookingsUsers {
-    private async getBookings(): Promise<booking[]> {
+    private async getBookings(username: string): Promise<booking[]> {
         try {
-            const response = await fetch(baseURLBookingsUser);
+            const response = await fetch(`${baseURLBookingsUser}?username=${username}`)
+
             const bookings = await response.json();
             console.log(bookings);
             return bookings;
@@ -327,38 +319,83 @@ class BookingsUsers {
     }
 
     public async displayBookings(): Promise<void> {
-        const bookings = await this.getBookings();
+        const bookings = await this.getBookings(usernameUser || "");
         const bookingsDisplay = document.querySelector(".bookings-all-display")! as HTMLDivElement;
-        let html = '';
+        bookingsDisplay.innerHTML = ' '
 
         if (!bookings.length) {
-            html = `<p>No Hotels Found</p>`;
+            const notFound = document.createElement('p')
+            notFound.textContent = 'No Bookings Yet'
         } else {
             bookings.forEach(booking => {
-                html += `
-                <div class="each-booking">
-                <h4>${booking.tour}</h4>
-                <h6>${booking.hotel}</h4>
-                <div class="dates-booking">
-                    <div class="date-booking">
-                        <h5>Start Date</p>
-                            <p>${booking.startDate}</p>
-                    </div>
-                    <div class="date-booking">
-                        <h5>End Date</p>
-                            <p>${booking.endDate}</p>
-                    </div>
-                </div>
-                <div class="last-part-booking">
-                    <p>Ksh ${booking.price}</p>
-                    <button>Edit Booking</button>
-                </div>
-            </div>
-                    `;
+                const eachBookingDiv = document.createElement('div')
+                eachBookingDiv.className = 'each-booking'
+
+                const tourNameBooking = document.createElement('h4')
+                tourNameBooking.textContent = booking.tour
+
+                const hotelNameBooking = document.createElement('h6')
+                hotelNameBooking.textContent = booking.hotel
+
+                const datesBookingDiv = document.createElement('div')
+                datesBookingDiv.className = 'dates-booking'
+
+                const bookingDatesStart = document.createElement('div')
+                bookingDatesStart.className = 'date-booking'
+
+
+                const bookingDatesEnd = document.createElement('div')
+                bookingDatesEnd.className = 'date-booking'
+
+
+                const startDateBooking = document.createElement('h5')
+                startDateBooking.textContent = 'Start Date'
+
+                const actualStartDate = document.createElement('p')
+                actualStartDate.textContent = booking.startDate
+
+                const endDateBooking = document.createElement('h5')
+                endDateBooking.textContent = 'End Date'
+
+                const actualEndDate = document.createElement('p')
+                actualEndDate.textContent = booking.endDate
+
+                const lastPartBookingDiv = document.createElement('div')
+                lastPartBookingDiv.className = 'last-part-booking'
+
+                const tourPriceBooking = document.createElement('p')
+                tourPriceBooking.textContent = booking.price
+
+                const editBookingBtn = document.createElement('button')
+                editBookingBtn.textContent = 'Edit Tour'
+                editBookingBtn.onclick = () => {
+                    makeBooking.classList.add('open');
+                }
+
+                eachBookingDiv.appendChild(tourNameBooking)
+                eachBookingDiv.appendChild(hotelNameBooking)
+                eachBookingDiv.appendChild(datesBookingDiv)
+
+                datesBookingDiv.appendChild(bookingDatesStart)
+                datesBookingDiv.appendChild(bookingDatesEnd)
+
+                bookingDatesStart.appendChild(startDateBooking)
+                bookingDatesStart.appendChild(actualStartDate)
+
+                bookingDatesEnd.appendChild(endDateBooking)
+                bookingDatesEnd.appendChild(actualEndDate)
+
+                eachBookingDiv.appendChild(lastPartBookingDiv)
+                lastPartBookingDiv.appendChild(tourPriceBooking)
+                lastPartBookingDiv.appendChild(editBookingBtn)
+
+
+                bookingsDisplay.appendChild(eachBookingDiv)
+
             });
         }
 
-        bookingsDisplay.innerHTML = html;
+
     }
 }
 

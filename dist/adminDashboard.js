@@ -255,7 +255,6 @@ class Tours {
                 e.preventDefault();
                 const tour = yield this.getTours();
                 const tourDetails = {
-                    id: tour.id,
                     name: tourNameInput.value,
                     image: tourImageURLInput.value,
                     destination: destinationInput.value,
@@ -320,7 +319,7 @@ class Tours {
                 tours.forEach(tour => {
                     const tr = document.createElement('tr');
                     const tourIdColumn = document.createElement('td');
-                    tourIdColumn.textContent = tour.id;
+                    tourIdColumn.textContent = tour.id || " ";
                     const tourNameColumn = document.createElement('td');
                     tourNameColumn.textContent = tour.name;
                     const tourHotelsColumn = document.createElement('td');
@@ -348,7 +347,7 @@ class Tours {
                     updateTour.classList.add('updateTour');
                     updateTour.addEventListener('click', (e) => __awaiter(this, void 0, void 0, function* () {
                         e.preventDefault();
-                        yield this.prepopulate(tour.id, tour.name, tour.description, tour.destination, tour.image, tour.price, tour.hotels);
+                        yield this.prepopulate(tour.name, tour.description, tour.destination, tour.image, tour.price, tour.hotels);
                     }));
                     const deleteTourBin = document.createElement('ion-icon');
                     deleteTourBin.setAttribute('name', 'trash-outline');
@@ -385,7 +384,7 @@ class Tours {
             }
         });
     }
-    prepopulate(id, name, description, destination, image, price, hotels) {
+    prepopulate(name, description, destination, image, price, hotels) {
         return __awaiter(this, void 0, void 0, function* () {
             tourNameInput.value = name;
             tourImageURLInput.value = image;
@@ -393,22 +392,21 @@ class Tours {
             destinationInput.value = destination;
             priceInput.value = price;
             addTourButton.textContent = 'Edit Tour';
-            const hotelSelect = document.getElementById("hotelSelect");
-            hotelSelect.innerHTML = "";
-            hotels.forEach(hotel => {
-                const option = document.createElement('option');
-                option.value = hotel;
-                option.textContent = hotel;
-                hotelSelect.appendChild(option);
-            });
-            hotelSelect.value = hotels[0];
+            // const hotelSelect = document.getElementById("hotelSelect") as HTMLSelectElement;
+            // hotelSelect.innerHTML = "";
+            // hotels.forEach(hotel => {
+            //     const option = document.createElement('option');
+            //     option.value = hotel;
+            //     option.textContent = hotel;
+            //     hotelSelect.appendChild(option);
+            // });
+            // hotelSelect.value = hotels[0];
         });
     }
     updateTour() {
         return __awaiter(this, void 0, void 0, function* () {
             const tourId = addTourButton.getAttribute("data-id");
             if (!tourId) {
-                console.error("Tour ID is missing");
                 return;
             }
             const updateTour = {
@@ -471,6 +469,10 @@ class Hotels {
                         successMessageHotels.style.display = 'block';
                         errorMessageHotels.style.display = 'none';
                         this.displayHotels();
+                        hotelNameInput.value = '';
+                        hotelImageURLInput.value = '';
+                        hotelLocationInput.value = '';
+                        hotelRatingInput.value = '';
                     }
                     catch (error) {
                         errorMessageHotels.textContent = 'Failed to add hotel';
@@ -482,7 +484,6 @@ class Hotels {
                 else if (addHotelButton.textContent === 'Edit Hotel') {
                     yield this.updateHotel();
                 }
-                this.clearForm();
             }));
         });
     }
@@ -597,12 +598,6 @@ class Hotels {
                 console.error("Failed to update hotel", error);
             }
         });
-    }
-    clearForm() {
-        hotelNameInput.value = '';
-        hotelImageURLInput.value = '';
-        hotelLocationInput.value = '';
-        hotelRatingInput.value = '';
     }
 }
 let hotelsInstance = new Hotels();

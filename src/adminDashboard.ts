@@ -256,7 +256,7 @@ usersInstance.displayUsers();
 //Tours Service
 let baseURLToursAdmin = "http://localhost:3000/tours"
 interface toursInterface {
-    id: string;
+    id?: string;
     name: string;
     image: string;
     destination: string;
@@ -292,7 +292,6 @@ class Tours {
             e.preventDefault();
             const tour = await this.getTours();
             const tourDetails: toursInterface = {
-                id: tour.id,
                 name: tourNameInput.value,
                 image: tourImageURLInput.value,
                 destination: destinationInput.value,
@@ -354,7 +353,7 @@ class Tours {
             tours.forEach(tour => {
                 const tr = document.createElement('tr');
                 const tourIdColumn = document.createElement('td');
-                tourIdColumn.textContent = tour.id;
+                tourIdColumn.textContent = tour.id || " ";
                 const tourNameColumn = document.createElement('td');
                 tourNameColumn.textContent = tour.name;
                 const tourHotelsColumn = document.createElement('td');
@@ -389,7 +388,7 @@ class Tours {
                 updateTour.classList.add('updateTour');
                 updateTour.addEventListener('click', async (e) => {
                     e.preventDefault()
-                    await this.prepopulate(tour.id, tour.name, tour.description, tour.destination, tour.image, tour.price, tour.hotels)
+                    await this.prepopulate(tour.name, tour.description, tour.destination, tour.image, tour.price, tour.hotels)
 
                 })
 
@@ -399,7 +398,7 @@ class Tours {
                 deleteTourBin.classList.add('deleteToursBin')
                 deleteTourBin.addEventListener('click', async (e) => {
                     e.preventDefault()
-                    await this.deleteTour(tour.id)
+                    await this.deleteTour(tour.id!)
                 })
                 tourDeleteColumn.appendChild(deleteTourBin)
                 tourDeleteColumn.appendChild(updateTour)
@@ -432,7 +431,7 @@ class Tours {
 
 
 
-    private async prepopulate(id: string, name: string, description: string, destination: string, image: string, price: string, hotels: string[]) {
+    private async prepopulate(name: string, description: string, destination: string, image: string, price: string, hotels: string[]) {
         tourNameInput.value = name;
         tourImageURLInput.value = image;
         descriptionInput.value = description;
@@ -441,26 +440,25 @@ class Tours {
         addTourButton.textContent = 'Edit Tour'
 
 
-        const hotelSelect = document.getElementById("hotelSelect") as HTMLSelectElement;
-        hotelSelect.innerHTML = "";
+        // const hotelSelect = document.getElementById("hotelSelect") as HTMLSelectElement;
+        // hotelSelect.innerHTML = "";
 
 
-        hotels.forEach(hotel => {
-            const option = document.createElement('option');
-            option.value = hotel;
-            option.textContent = hotel;
-            hotelSelect.appendChild(option);
-        });
+        // hotels.forEach(hotel => {
+        //     const option = document.createElement('option');
+        //     option.value = hotel;
+        //     option.textContent = hotel;
+        //     hotelSelect.appendChild(option);
+        // });
 
 
-        hotelSelect.value = hotels[0];
+        // hotelSelect.value = hotels[0];
     }
 
     private async updateTour(): Promise<void> {
         const tourId = addTourButton.getAttribute("data-id");
 
         if (!tourId) {
-            console.error("Tour ID is missing");
             return;
         }
 
@@ -543,6 +541,10 @@ class Hotels {
                     successMessageHotels.style.display = 'block';
                     errorMessageHotels.style.display = 'none';
                     this.displayHotels();
+                    hotelNameInput.value = '';
+                    hotelImageURLInput.value = '';
+                    hotelLocationInput.value = '';
+                    hotelRatingInput.value = '';
                 } catch (error) {
                     errorMessageHotels.textContent = 'Failed to add hotel';
                     errorMessageHotels.style.display = 'block';
@@ -552,7 +554,7 @@ class Hotels {
             } else if (addHotelButton.textContent === 'Edit Hotel') {
                 await this.updateHotel();
             }
-            this.clearForm();
+
         });
     }
 
@@ -669,12 +671,7 @@ class Hotels {
         }
     }
 
-    private clearForm(): void {
-        hotelNameInput.value = '';
-        hotelImageURLInput.value = '';
-        hotelLocationInput.value = '';
-        hotelRatingInput.value = '';
-    }
+
 }
 
 let hotelsInstance = new Hotels();

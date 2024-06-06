@@ -12,96 +12,184 @@
       "username": "Mulandi",
       "email": "jenstechnologies@gmail.com",
       "password": "12345678",
-      "role": "admin"
-    },
-    {
-      "id": "291d",
-      "email": "gitongasally4@gmail.com",
-      "username": "sally.gitonga20@students.dkut.ac.ke",
-      "password": "12345678",
       "role": "customer"
     },
     {
       "id": "b6d2",
-      "email": "gitongasally4@gmail.com",
       "username": "Sally Gitonga",
+      "email": "gitongasally4@gmail.com",
       "password": "12345678",
-      "role": "customer"
+      "role": "admin"
     }
   ],
   "hotels": [
     {
-      "id": "77f4",
-      "name": "Mountain Breeze",
-      "image": "https://images.unsplash.com/photo-1625244724120-1fd1d34d00f6?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8aG90ZWxzfGVufDB8fDB8fHww",
-      "location": "Embu",
+      "id": "7d15",
+      "name": "Golden Tulip",
+      "image": "https://media.istockphoto.com/id/1198357646/photo/luxury-apartment-with-private-pool.webp?b=1&s=170667a&w=0&k=20&c=os0-rfLgRrzDA7TVXxKRTOvcNgwCskn_1KW5IyphyS8=",
+      "location": "Zanzibar City",
+      "rating": "5 Star"
+    },
+    {
+      "id": "967e",
+      "name": "Antonio Garden",
+      "image": "https://media.istockphoto.com/id/1154864904/photo/aerial-view-of-beautiful-hotel-in-indian-ocean-at-sunset-in-summer-zanzibar-africa-top-view.webp?b=1&s=170667a&w=0&k=20&c=NoCGqOk3xQ1fO2mSMEWewdL_lPv5K1LvHWxSYNsgZN8=",
+      "location": "Zanzibar City",
+      "rating": "5 Star"
+    },
+    {
+      "id": "24f1",
+      "name": "AI Minar Hotel",
+      "image": "https://media.istockphoto.com/id/1208302982/photo/beachfront-swimming-pool.webp?b=1&s=170667a&w=0&k=20&c=1dN1aarGy5z1Wu3Y_MMCKCjwCq0JBGYZ-upy9ykTrKA=",
+      "location": "Zanzibar City",
+      "rating": "5 Star"
+    },
+    {
+      "id": "b7af",
+      "name": "Retro Hotel",
+      "image": "https://media.istockphoto.com/id/1299710067/photo/double-bedroom-with-sea-view.webp?b=1&s=170667a&w=0&k=20&c=yJbUvi6ngop8cDPTHfFNSXQiDzhWPPgvzMFY62GUQVk=",
+      "location": "Zanzibar City",
+      "rating": "5 Star"
+    },
+    {
+      "id": "daad",
+      "name": "Villa Ameera",
+      "image": "https://media.istockphoto.com/id/1208302982/photo/beachfront-swimming-pool.webp?b=1&s=170667a&w=0&k=20&c=1dN1aarGy5z1Wu3Y_MMCKCjwCq0JBGYZ-upy9ykTrKA=",
+      "location": "Malindi",
+      "rating": "4 Star"
+    },
+    {
+      "id": "09ec",
+      "name": "Mara Sweet Acacia Lodge",
+      "image": "https://media.istockphoto.com/id/1454099860/photo/exterior-of-wooden-tiny-house-with-forest-background.webp?b=1&s=170667a&w=0&k=20&c=E0UQmUYLJS6cGFQvVhMgtj26BAPb6xkY3wbPkQOCbss=",
+      "location": "Masaai Mara",
+      "rating": "4 Star"
+    },
+    {
+      "id": "02e7",
+      "name": "JW Marriott Resort",
+      "image": "https://media.istockphoto.com/id/1392992509/photo/wooden-tiny-house-interior-with-bed-furniture-and-triangular-window.webp?b=1&s=170667a&w=0&k=20&c=DbZEDKZ2R6LhUZUHhYYVnyHbNObb5b26CE5_0Ag2QBE=",
+      "location": "Masaai Mara",
       "rating": "3 Star"
     },
     {
-      "id": "59d4",
-      "name": "Pride Inn Azure Hotel",
-      "image": "https://images.unsplash.com/photo-1625244724120-1fd1d34d00f6?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8aG90ZWxzfGVufDB8fDB8fHww",
-      "location": "Nairobi",
-      "rating": "5 Stars"
+      "id": "a2d8",
+      "name": "Marine Holiday House",
+      "image": "https://media.istockphoto.com/id/1453463109/photo/maldives-hotel-beach-resort-on-tropical-island-with-aerial-drone-view.webp?b=1&s=170667a&w=0&k=20&c=undCwG6CObvD3DTd_Y02JmM2E_z_vUo4ZEeRIpB_bRo=",
+      "location": "Malindi",
+      "rating": "3 Star"
+    },
+    {
+      "id": "0508",
+      "name": "Premier Hotel Cape Town",
+      "image": "https://media.istockphoto.com/id/185110283/photo/cape-towns-yacht-basin-and-expensive-neighbouring-housing.webp?b=1&s=170667a&w=0&k=20&c=g8ZIO7qlkD-SnFgFUg9Qw6TqOR8YYmvr1H19Oh1gTbg=",
+      "location": "Cape Town",
+      "rating": "3 Star"
     }
   ],
   "tours": [
     {
-      "id": "c111",
-      "name": "Tour To Coast",
-      "image": "https://images.unsplash.com/photo-1617018681623-987895ca1c99?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fHRvdXJ8ZW58MHx8MHx8fDA%3D",
-      "destination": "Nanyuki",
-      "description": "Indoor Living",
-      "price": "23,000",
+      "id": "30e6",
+      "name": "Tour to Zanzibar",
+      "image": "https://images.unsplash.com/photo-1575999502951-4ab25b5ca889?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8emFuemliYXJ8ZW58MHx8MHx8fDA%3D",
+      "destination": "Zanzibar City",
+      "description": "Enjoy some adventures in Zanzibar",
+      "price": "40,000",
       "hotels": [
-        "Maiyan"
+        "Golden Tulip Resort",
+        "Antonio Garden",
+        "AI Minar Hotel",
+        "Retro"
       ]
     },
     {
-      "id": "a12e",
-      "name": "Tour To Coast",
-      "image": "https://images.unsplash.com/photo-1569949381669-ecf31ae8e613?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8dG91cnxlbnwwfHwwfHx8MA%3D%3D",
-      "destination": "Nanyuki",
-      "description": "Indoor Living",
-      "price": "90,000",
+      "id": "b042",
+      "name": "Malindi Baech Getaway",
+      "image": "https://media.istockphoto.com/id/622434490/photo/malindi-beach-indian-ocean-in-kenya-africa.webp?b=1&s=170667a&w=0&k=20&c=0Acx8b17UmT-6lJ2Z65L0fimIcNorhOY7vwkcxwJOeU=",
+      "destination": "Malindi",
+      "description": "Tour to the Kenyan Coast",
+      "price": "30,000",
       "hotels": [
-        "Greece Martin Hotel"
+        "Villa Ameera",
+        "Marine Holiday House",
+        "Marine Holiday House"
       ]
     },
     {
-      "id": "9960",
+      "id": "291a",
+      "name": "Maasai Mara Bush Safari",
+      "image": " https://media.istockphoto.com/id/1128748845/photo/group-of-african-elephants-in-the-wild.webp?b=1&s=170667a&w=0&k=20&c=6a4Og1DMXUabRX_qCJrxECj5QtvrRHQxdIjgisDt62k=",
+      "destination": "Maasai Mara",
+      "description": " Bush Safari",
+      "price": "45,000",
+      "hotels": [
+        "JW Marriot ",
+        "Mara Sweet Acacia Lodge"
+      ]
+    },
+    {
+      "id": "3ec0",
       "name": "Tour to South Africa",
-      "image": "https://images.unsplash.com/photo-1617018681623-987895ca1c99?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fHRvdXJ8ZW58MHx8MHx8fDA%3D",
-      "destination": "Johannesburg",
-      "description": "City Tour",
-      "price": "90,000",
+      "image": " https://media.istockphoto.com/id/689431572/photo/south-africa-flag-wooden-sign.webp?b=1&s=170667a&w=0&k=20&c=2RhSu37Y72HIrT5x6Dan0G2Ogo4-D0HQEFpxI1w5tRI=",
+      "destination": "Cape Town",
+      "description": "Enjoythe dreamy destination of South Africa",
+      "price": "70,000",
       "hotels": [
-        "Charlotte Hotel",
-        "Primark Resort",
-        "Filadephia"
+        "Premier Hotel Capetown"
+      ]
+    },
+    {
+      "id": "d6dd",
+      "name": "Barbados",
+      "image": "https://images.unsplash.com/photo-1575999502951-4ab25b5ca889?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8emFuemliYXJ8ZW58MHx8MHx8fDA%3D",
+      "destination": "Dubai",
+      "description": "Good",
+      "price": "20,000",
+      "hotels": [
+        "Rich Hotel"
       ]
     }
   ],
   "bookings": [
     {
-      "id": "d82b",
+      "id": "a5e3",
       "username": "Sally Gitonga",
-      "tour": "Tour To Coast",
-      "hotel": "Greece Martin Hotel",
-      "startDate": "2024-06-13",
-      "endDate": "2024-06-14",
+      "tour": "Malindi Baech Getaway",
+      "hotel": "Marine Holiday House",
+      "startDate": "2024-06-28",
+      "endDate": "2024-06-13",
       "people": 1,
-      "price": "90,000"
+      "price": "30,000"
     },
     {
-      "id": "0a74",
-      "username": "Edith",
-      "tour": "Tour to South Africa",
-      "hotel": "Charlotte Hotel",
-      "startDate": "2024-07-26",
-      "endDate": "2024-06-20",
+      "id": "08ef",
+      "username": "Mulandi",
+      "tour": "Malindi Baech Getaway",
+      "hotel": "Marine Holiday House",
+      "startDate": "2024-06-28",
+      "endDate": "2024-06-14",
       "people": 1,
-      "price": "90,000"
+      "price": "30,000"
+    },
+    {
+      "id": "5c0e",
+      "username": "Sally Gitonga",
+      "tour": "Tour to Zanzibar",
+      "hotel": "AI Minar Hotel",
+      "startDate": "2024-06-29",
+      "endDate": "2024-06-22",
+      "people": 1,
+      "price": "40,000"
+    },
+    {
+      "id": "4882",
+      "username": "Jonathan",
+      "tour": "Tour to South Africa",
+      "hotel": "Premier Hotel Capetown",
+      "startDate": "2024-06-22",
+      "endDate": "2024-06-22",
+      "people": 1,
+      "price": "70,000"
     }
   ]
 }
